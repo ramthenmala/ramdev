@@ -2,8 +2,7 @@
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  reactStrictMode: true,
-  ignoreBuildErrors: true,
+  /* config options here */
 };
 
-export default nextConfig;
+module.exports = nextConfig;
