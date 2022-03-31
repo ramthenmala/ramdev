@@ -9,15 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@portabletext/react": "^1.0.4",
+    "@sanity/image-url": "^1.0.1",
     "next": "12.1.2",
-    "qs": "^6.10.3",
+    "next-sanity": "^0.5.1",
+    "next-themes": "^0.1.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "swr": "^1.2.2"
   },
   "devDependencies": {
     "@types/node": "17.0.23",
-    "@types/qs": "^6.9.7",
     "@types/react": "17.0.43",
     "@types/react-dom": "17.0.14",
     "autoprefixer": "^10.4.4",
