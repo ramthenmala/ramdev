@@ -5,7 +5,7 @@ export default class CustomDocument extends Document {
     return (
       <Html lang="en">
         <Head></Head>
-        <body className="bg-white dark:bg-black text-black dark:text-white">
+        <body>
           <Main />
           <NextScript />
         </body>
