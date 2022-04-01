@@ -3,7 +3,7 @@ import { urlFor } from '../lib/sanity';
 
 import { groq } from 'next-sanity';
 import { sanityClient } from '../lib/server';
-import Container from 'components/pageLayout';
+import Container from 'components/PageLayout';
 import { NextPage } from 'next';
 
 const blogQuery = groq`

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const HeroSection = () => {
   return (
     <section className="flex flex-col-reverse sm:flex-row items-start">

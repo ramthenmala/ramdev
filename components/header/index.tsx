@@ -1,4 +1,4 @@
-import Container from 'components/pageLayout';
+import Container from 'components/PageLayout';
 import MobileMenu from './MobileMenu';
 import NavMenuWrapper from './NavMenuWrapper';
 import NavWrapper from './NavWrapper';

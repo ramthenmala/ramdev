@@ -1,6 +1,6 @@
 import GitPosts from 'components/GitPosts/GitPostList';
-import HeroSection from 'components/hero/Hero';
-import Container from 'components/pageLayout';
+import HeroSection from 'components/Hero/Hero';
+import Container from 'components/PageLayout';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { gitQuery } from 'query/gitHub';
