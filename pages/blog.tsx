@@ -26,14 +26,14 @@ const BlogPosts: NextPage = ({ post }) => {
     <Container>
       <section className="mt-16 pb-16">
         <h2 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 text-black dark:text-white">
-          Git Posts
+          Blog Page
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {post?.length > 0
             ? post.map((blogPost) => (
                 <CardList
                   title={blogPost.title}
-                  slug={blogPost.slug.current}
+                  slug={`/blog/${blogPost.slug.current}`}
                   imgUrl={urlFor(blogPost.image).url()}
                   key={blogPost._id}
                 />
@@ -47,7 +47,6 @@ const BlogPosts: NextPage = ({ post }) => {
 
 export async function getStaticProps() {
   const post = await sanityClient.fetch(blogQuery);
-  console.log('posts', post);
   return {
     props: {
       post,
