@@ -1,5 +1,6 @@
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next';
 import { groq } from 'next-sanity';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { urlFor } from '../../lib/sanity';
 import { sanityClient } from '../../lib/server';
@@ -22,7 +23,11 @@ export const blogDetailsQuery = groq`
 
 const BlogDetails = ({ data }) => {
   const [likes, likesSet] = useState(data?.blogData?.likes);
-  console.log(likes);
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   const addLike = async () => {
     const res = await fetch('/api/blog-likes', {
