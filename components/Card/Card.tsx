@@ -1,4 +1,4 @@
-import CardImage from 'components/UI/image';
+import CardImage from '../UI/image';
 import Link from 'next/link';
 import React from 'react';
 

@@ -33,7 +33,7 @@ const BlogPosts: NextPage = ({ post }) => {
             ? post.map((blogPost) => (
                 <CardList
                   title={blogPost.title}
-                  slug={`/blog/${blogPost.slug.current}`}
+                  slug={`blog/${blogPost.slug.current}`}
                   imgUrl={urlFor(blogPost.image).url()}
                   key={blogPost._id}
                 />

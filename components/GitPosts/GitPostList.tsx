@@ -1,4 +1,4 @@
-import CardList from 'components/Card/CardList';
+import CardList from '../Card/CardList';
 import { urlFor } from '../../lib/sanity';
 
 const GitPosts = ({ post }) => {
