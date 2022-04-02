@@ -1,4 +1,4 @@
-import Container from '../PageLayout';
+import Container from '../PageLayout/Container';
 import MobileMenu from './MobileMenu';
 import NavMenuWrapper from './NavMenuWrapper';
 import NavWrapper from './NavWrapper';

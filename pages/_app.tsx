@@ -1,7 +1,7 @@
 import '/styles/globals.css';
 import type { AppProps } from 'next/app';
-import PageHeader from '../components/Header';
 import { ThemeProvider } from 'next-themes';
+import PageHeader from '../components/Header/PageHeader';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

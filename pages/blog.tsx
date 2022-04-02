@@ -3,7 +3,7 @@ import { urlFor } from '../lib/sanity';
 
 import { groq } from 'next-sanity';
 import { sanityClient } from '../lib/server';
-import Container from '../components/PageLayout';
+import Container from '../components/PageLayout/Container';
 import { NextPage } from 'next';
 
 const blogQuery = groq`
@@ -21,7 +21,7 @@ const blogQuery = groq`
   }
 `;
 
-const BlogPosts: NextPage = ({ post }) => {
+const BlogPosts: NextPage = ({ post }: any) => {
   return (
     <Container>
       <section className="mt-16 pb-16">
