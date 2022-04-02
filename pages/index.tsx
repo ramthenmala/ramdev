@@ -1,9 +1,9 @@
-import GitPosts from 'components/GitPosts/GitPostList';
-import HeroSection from 'components/Hero/Hero';
-import Container from 'components/PageLayout';
+import GitPosts from '../components/GitPosts/GitPostList';
+import HeroSection from '../components/Hero/Hero';
+import Container from '../components/PageLayout';
 import { NextPage } from 'next';
 import Head from 'next/head';
-import { gitQuery } from 'query/gitHub';
+import { gitQuery } from '../query/gitHub';
 
 import { sanityClient } from '../lib/server';
 

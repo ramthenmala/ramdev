@@ -1,9 +1,9 @@
-import CardList from 'components/Card/CardList';
+import CardList from '../components/Card/CardList';
 import { urlFor } from '../lib/sanity';
 
 import { groq } from 'next-sanity';
 import { sanityClient } from '../lib/server';
-import Container from 'components/PageLayout';
+import Container from '../components/PageLayout';
 import { NextPage } from 'next';
 
 const blogQuery = groq`
