@@ -1,9 +1,8 @@
 import CardImage from 'components/UI/Image';
 import Link from 'next/link';
 import React from 'react';
-import { ICard } from 'types/Card';
 
-const Card = ({ title, slug, imgUrl }: ICard) => {
+const Card = ({ title, slug, imgUrl }) => {
   return (
     <div className="bg-white rounded-lg shadow-md dark:bg-gray-800 ">
       <Link href={`/${slug}`} passHref>
