@@ -5,6 +5,9 @@ const nextConfig = {
     loader: 'default',
     domains: ['localhost', 'cdn.sanity.io'],
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 module.exports = nextConfig;
