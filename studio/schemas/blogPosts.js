@@ -44,5 +44,13 @@ export default {
         },
       ],
     },
+    {
+      name: 'likes',
+      title: 'Likes',
+      type: 'number',
+    },
   ],
+  initialValue: {
+    likes: 0,
+  },
 };
