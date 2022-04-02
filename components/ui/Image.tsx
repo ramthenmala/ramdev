@@ -1,12 +1,11 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import { TImage } from 'types/image';
 
 function cn(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-const CardImage = ({ alt, imgUrl }: TImage) => {
+const CardImage = ({ alt, imgUrl }) => {
   const [isLoading, isLoadingSet] = useState<boolean>(true);
   return (
     <Image

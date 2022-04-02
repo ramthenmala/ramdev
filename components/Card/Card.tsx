@@ -1,4 +1,4 @@
-import CardImage from '../UI/Image';
+import CardImage from 'components/UI/Image';
 import Link from 'next/link';
 import React from 'react';
 import { ICard } from 'types/Card';
