@@ -5,6 +5,7 @@ import { groq } from 'next-sanity';
 import { sanityClient } from '../lib/server';
 import Container from '../components/PageLayout/Container';
 import { NextPage } from 'next';
+import HeroSection from '../components/HeroSection';
 
 const blogQuery = groq`
   *[_type == "blogposts"] {
@@ -17,17 +18,17 @@ const blogQuery = groq`
         url
       }
     },
-    description
   }
 `;
 
 const BlogPosts: NextPage = ({ post }: any) => {
   return (
     <Container>
-      <section className="mt-16 pb-16">
-        <h2 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 text-black dark:text-white">
-          Blog Page
-        </h2>
+      <HeroSection
+        title="Blog"
+        description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+      />
+      <section className="">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {post?.length > 0
             ? post.map((blogPost) => (

@@ -4,7 +4,15 @@ export default class CustomDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head></Head>
+        <Head>
+          <link
+            rel="preload"
+            href="/fonts/ibm-plex-sans-var.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />
