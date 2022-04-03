@@ -9,17 +9,29 @@ export default {
       type: 'string',
     },
     {
+      name: 'subtitle',
+      title: 'Sub Title',
+      type: 'string',
+    },
+    {
+      name: 'likes',
+      title: 'Likes',
+      type: 'number',
+    },
+    {
       name: 'image',
       title: 'Banner Image',
       type: 'image',
       options: {
         hotspot: true,
       },
-    },
-    {
-      name: 'publishedate',
-      title: 'Published Date',
-      type: 'date',
+      fields: [
+        {
+          type: 'text',
+          name: 'alt',
+          title: 'Description Alt',
+        },
+      ],
     },
     {
       title: 'Slug',
@@ -33,21 +45,61 @@ export default {
       },
     },
     {
+      name: 'publishedate',
+      title: 'Published Date',
+      type: 'datetime',
+    },
+    {
       name: 'description',
       title: 'Description',
       type: 'array',
       of: [
         {
-          title: 'Block',
           type: 'block',
-          styles: [{ title: 'Normal', value: 'Normal' }],
+        },
+        {
+          type: 'image',
+          fields: [
+            {
+              title: 'Image Position',
+              name: 'imagepos',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Center', value: 'center' },
+                  { title: 'Left', value: 'left' },
+                  { title: 'Right', value: 'Right' },
+                ],
+                layout: 'radio',
+                isHighlighted: true,
+              },
+            },
+            {
+              type: 'text',
+              name: 'alt',
+              title: 'Description',
+              options: {
+                isHighlighted: true,
+              },
+            },
+          ],
+          options: {
+            hotspot: true,
+          },
+        },
+        {
+          type: 'code',
+          options: {
+            withFilename: true,
+          },
         },
       ],
     },
     {
-      name: 'likes',
-      title: 'Likes',
-      type: 'number',
+      title: 'Author',
+      name: 'author',
+      type: 'reference',
+      to: [{ type: 'author' }],
     },
   ],
   initialValue: {

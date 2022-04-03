@@ -1,6 +1,5 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-
 import { sanityClient } from '../lib/server';
 import GitPosts from '../components/GitPosts/GitPostList';
 import Container from '../components/PageLayout/Container';

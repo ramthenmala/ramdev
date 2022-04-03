@@ -5,7 +5,7 @@ import PageHeader from '../components/Header/PageHeader';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider>
+    <ThemeProvider attribute="class">
       <PageHeader />
       <main>
         <Component {...pageProps} />

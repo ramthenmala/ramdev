@@ -1,25 +1,11 @@
-import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next';
-import { groq } from 'next-sanity';
+import { GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { urlFor } from '../../lib/sanity';
 import { sanityClient } from '../../lib/server';
+import { blogDetailsQuery } from '../../query/blog';
 
-export const blogDetailsQuery = groq`
-  *[_type == "blogposts" && slug.current == $slug][0]{
-      _id,
-    title,
-    slug,
-    image{
-      asset->{
-        _id,
-        url
-      }
-    },
-    description,
-    likes
-  }
-`;
+import Container from '../../components/PageLayout/Container';
+import Blogpost from '../../components/Blogpost';
 
 const BlogDetails = ({ data }) => {
   const [likes, likesSet] = useState(data?.blogData?.likes);
@@ -40,10 +26,11 @@ const BlogDetails = ({ data }) => {
   };
   const { blogData } = data;
   return (
-    <>
+    <Container>
       <h1>{blogData.title}</h1>
+      <Blogpost content={blogData.description} />
       <button onClick={addLike}>{blogData.likes} :-)</button>
-    </>
+    </Container>
   );
 };
 
@@ -65,6 +52,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params;
   const blogData = await sanityClient.fetch(blogDetailsQuery, { slug });
+  console.log(blogData);
   return {
     props: {
       data: { blogData },

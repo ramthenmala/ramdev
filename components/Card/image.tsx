@@ -16,8 +16,8 @@ const CardImage = ({ alt, imgUrl }) => {
       className={cn(
         'duration-700 ease-in-out group-hover:opacity-75',
         isLoading
-          ? 'scale-110 blur-2xl grayscale rounded-t-lg'
-          : 'scale-100 blur-0 grayscale-0 rounded-t-lg'
+          ? 'scale-110 blur-2xl grayscale '
+          : 'scale-100 blur-0 grayscale-0 '
       )}
       onLoadingComplete={() => isLoadingSet(false)}
     />

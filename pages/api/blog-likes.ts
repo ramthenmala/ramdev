@@ -1,10 +1,9 @@
-import { sanityClient } from '../../lib/server'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { sanityClient } from '../../lib/server'
 
 sanityClient.config({
   token: process.env.SANITY_WRITE_POST_LIKE_TOKEN
 })
-
 
 export default async function likeButtonHandler(
   req: NextApiRequest,

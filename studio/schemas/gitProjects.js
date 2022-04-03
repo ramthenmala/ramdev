@@ -19,7 +19,7 @@ export default {
     {
       name: 'publishedate',
       title: 'Published Date',
-      type: 'date',
+      type: 'datetime',
     },
     {
       title: 'Slug',
