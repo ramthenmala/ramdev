@@ -42,3 +42,9 @@ export const blogNextAndPrevQuery = groq`
     "nextPost": *[_type == "blogposts" && ^.publishedate < publishedate]|order(publishedate asc)[0]{title,"slug": slug.current},
   }|order(publishedAt)[0]
 `
+
+export const blogSlug = `*[_type == "blogposts" && defined(slug.current)] {
+           "params": {
+               "slug": slug.current
+           }
+        }`

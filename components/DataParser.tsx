@@ -29,7 +29,6 @@ const serializers = {
   },
 };
 const DataParser = ({ content }) => {
-  // return <BlockContent blocks={content} serializers={serializers} />;
   return <PortableText value={content} components={serializers} />;
 };
 

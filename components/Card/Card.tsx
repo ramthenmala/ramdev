@@ -1,7 +1,8 @@
 import CardImage from './CardImage';
 import Link from 'next/link';
+import { CardProps } from '../../types/Card';
 
-const Card = ({ title, slug, imgUrl }) => {
+const Card = ({ title, slug, imgUrl }: CardProps) => {
   return (
     <div className="bg-white rounded-lg shadow-md dark:bg-gray-800 ">
       <Link href={`/${slug}`} passHref>

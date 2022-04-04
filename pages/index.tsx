@@ -1,11 +1,11 @@
-import { NextPage } from 'next';
-import Head from 'next/head';
+import { GetStaticProps, NextPage } from 'next';
 import { sanityClient } from '../lib/server';
 import GitPosts from '../components/GitPosts/GitPostList';
 import Container from '../components/Container';
 import { gitQuery } from '../query/gitHub';
+import { GitResult } from '../types/gitTypes';
 
-const Home: NextPage = ({ post }: any) => {
+const Home: NextPage = ({ post }) => {
   return (
     <>
       <Container>
@@ -36,13 +36,13 @@ const Home: NextPage = ({ post }: any) => {
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const post = await sanityClient.fetch(gitQuery);
   return {
     props: {
       post,
     },
   };
-}
+};
 
 export default Home;

@@ -2,16 +2,21 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { sanityClient } from '../../lib/server';
-import { blogDetailsQuery, blogNextAndPrevQuery } from '../../query/blog';
+import {
+  blogDetailsQuery,
+  blogNextAndPrevQuery,
+  blogSlug,
+} from '../../query/blog';
 import Container from '../../components/Container';
 import DataParser from '../../components/DataParser';
 import Image from 'next/image';
 import moment from 'moment';
 import BlogNextPrev from '../../components/BlogNextPrev';
+import { toPlainText } from '@portabletext/react';
+import readingTime from 'reading-time/lib/reading-time';
 
 const BlogDetails = ({ data }) => {
   const [likes, likesSet] = useState(data?.blogData?.likes);
-  const router = useRouter();
 
   const addLike = async () => {
     const res = await fetch('/api/blog-likes', {
@@ -25,7 +30,10 @@ const BlogDetails = ({ data }) => {
 
   const { blogData } = data;
   const { blogNextAndPrev } = data;
-
+  console.log(toPlainText(blogData.description));
+  const readingDoc = toPlainText(blogData.description);
+  const stats = readingTime(readingDoc);
+  console.log(stats.minutes);
   return (
     <Container>
       <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
@@ -46,9 +54,9 @@ const BlogDetails = ({ data }) => {
           </p>
         </div>
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
-          11 Min
+          {parseInt(stats.minutes)} Min
           {` • `}
-          1235
+          {/* 1235 */}
         </p>
       </div>
       <article className="prose dark:prose-dark py-10 w-full">
@@ -84,14 +92,7 @@ const BlogDetails = ({ data }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = await sanityClient.fetch(
-    `*[_type == "blogposts" && defined(slug.current)] {
-           "params": {
-               "slug": slug.current
-           }
-        }`
-  );
-
+  const paths = await sanityClient.fetch(blogSlug);
   return {
     paths,
     fallback: true,
