@@ -27,6 +27,10 @@ const Home: NextPage = ({ post }: any) => {
         </div>
 
         <GitPosts post={post} />
+
+        <GitPosts post={post} />
+
+        <GitPosts post={post} />
       </Container>
     </>
   );

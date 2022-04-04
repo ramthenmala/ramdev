@@ -1,6 +1,5 @@
-import CardImage from './image';
+import CardImage from './CardImage';
 import Link from 'next/link';
-import React from 'react';
 
 const Card = ({ title, slug, imgUrl }) => {
   return (

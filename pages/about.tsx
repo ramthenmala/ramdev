@@ -22,7 +22,7 @@ const AboutPage: NextPage<Props> = ({ post: initialData }) => {
             title={aboutData[0].title}
             description={aboutData[0].subtitle}
           />
-          <div className="prose dark:prose-dark">
+          <div className="prose dark:prose-dark py-10">
             <DataParser content={aboutData[0].description} />
           </div>
         </>

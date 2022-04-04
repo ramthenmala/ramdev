@@ -1,10 +1,12 @@
 import { groq } from 'next-sanity';
+import { sanityClient } from '../lib/server';
 
-export const gitQuery = groq`
- *[_type == "photogallery"] {
+export const photoGalQuery = groq`
+  *[_type == "photogallery"] {
       _id,
     title,
     slug,
+   publishedate,
     image{
       asset->{
         _id,
@@ -12,13 +14,12 @@ export const gitQuery = groq`
       }
     },
     gallery {
-    display,
-    images[
-       asset->{
-        _id,
-        url
-      }
-    ]
+        images
     }
   }
 `;
+
+export const getPhotoGal = async ({ offset }) => {
+  const post = await sanityClient.fetch(`${photoGalQuery}[${offset}...${offset + 10}]`);
+  return post;
+};

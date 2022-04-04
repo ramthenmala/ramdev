@@ -2,7 +2,7 @@ import BlockContent from '@sanity/block-content-to-react';
 
 import { PortableText } from '@portabletext/react';
 import { urlFor } from '../lib/sanity';
-import CardImage from './Card/image';
+import CardImage from './Card/CardImage';
 import { HighLightCode } from './HighLightCode';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 

@@ -1,20 +1,37 @@
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
+import CardList from '../components/Card/CardList';
 import Container from '../components/Container';
 import HeroSection from '../components/Hero';
+import { urlFor } from '../lib/sanity';
+import { getPhotoGal } from '../query/photography';
 
-const PhotographyPage: NextPage = () => {
+const PhotographyPage: NextPage = ({ gallery }) => {
   return (
     <Container>
       <HeroSection title="Photography" description="Photography" />
-      <div className="prose dark:prose-dark">
-        <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-            lsdjlfsdjf
-          </div>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {gallery?.length &&
+          gallery.map((phGallery) => (
+            <CardList
+              title={phGallery.title}
+              slug={phGallery.slug.current}
+              imgUrl={urlFor(phGallery.image).url()}
+              key={phGallery._id}
+            />
+          ))}
       </div>
     </Container>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const gallery = await getPhotoGal({ offset: 0 });
+  console.log(gallery);
+  return {
+    props: {
+      gallery,
+    },
+  };
 };
 
 export default PhotographyPage;

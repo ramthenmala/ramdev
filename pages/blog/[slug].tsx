@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { sanityClient } from '../../lib/server';
 import { blogDetailsQuery, blogNextAndPrevQuery } from '../../query/blog';
-
 import Container from '../../components/Container';
 import DataParser from '../../components/DataParser';
 import Image from 'next/image';
@@ -13,10 +12,6 @@ import BlogNextPrev from '../../components/BlogNextPrev';
 const BlogDetails = ({ data }) => {
   const [likes, likesSet] = useState(data?.blogData?.likes);
   const router = useRouter();
-
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
 
   const addLike = async () => {
     const res = await fetch('/api/blog-likes', {
@@ -34,7 +29,7 @@ const BlogDetails = ({ data }) => {
   return (
     <Container>
       <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
-        {blogData.title}
+        {blogData?.title}
       </h1>
       <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
         <div className="flex items-center">
@@ -56,31 +51,34 @@ const BlogDetails = ({ data }) => {
           1235
         </p>
       </div>
-      <article className="prose dark:prose-dark mt-4">
+      <article className="prose dark:prose-dark py-10 w-full">
         <DataParser content={blogData.description} />
         <button onClick={addLike}>{likes} :-)</button>
-
-        <div className="flex flex-col w-full">
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
-            {blogNextAndPrev?.previousPost?.title !== null ? (
-              <BlogNextPrev
-                slug={`/blog/${blogNextAndPrev.previousPost.slug}`}
-                passLink={blogNextAndPrev.previousPost.title}
-              />
-            ) : (
-              ''
-            )}
-            {blogNextAndPrev?.nextPost?.title !== null ? (
-              <BlogNextPrev
-                slug={`/blog/${blogNextAndPrev.nextPost.slug}`}
-                passLink={blogNextAndPrev.nextPost.title}
-              />
-            ) : (
-              ''
-            )}
-          </div>
-        </div>
       </article>
+      <div className="flex flex-col">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full ">
+          {blogNextAndPrev?.previousPost !== null ? (
+            <BlogNextPrev
+              cls=""
+              text="Previous"
+              slug={`/blog/${blogNextAndPrev?.previousPost?.slug}`}
+              passLink={blogNextAndPrev?.previousPost?.title}
+            />
+          ) : (
+            ''
+          )}
+          {blogNextAndPrev?.nextPost !== null ? (
+            <BlogNextPrev
+              cls="text-right"
+              text="Next"
+              slug={`/blog/${blogNextAndPrev?.nextPost?.slug}`}
+              passLink={blogNextAndPrev?.nextPost?.title}
+            />
+          ) : (
+            ''
+          )}
+        </div>
+      </div>
     </Container>
   );
 };
@@ -106,6 +104,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const blogNextAndPrev = await sanityClient.fetch(blogNextAndPrevQuery, {
     slug,
   });
+  console.log(blogNextAndPrev);
   return {
     props: {
       data: { blogData, blogNextAndPrev },
