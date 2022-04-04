@@ -1,5 +1,4 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { sanityClient } from '../../lib/server';
 import {
@@ -14,10 +13,10 @@ import moment from 'moment';
 import BlogNextPrev from '../../components/BlogNextPrev';
 import { toPlainText } from '@portabletext/react';
 import readingTime from 'reading-time/lib/reading-time';
+import { LikeButton } from '../../components/IconsPack';
 
 const BlogDetails = ({ data }) => {
   const [likes, likesSet] = useState(data?.blogData?.likes);
-
   const addLike = async () => {
     const res = await fetch('/api/blog-likes', {
       method: 'POST',
@@ -27,13 +26,11 @@ const BlogDetails = ({ data }) => {
     const data = await res.json();
     likesSet(data.likes);
   };
-
   const { blogData } = data;
   const { blogNextAndPrev } = data;
-  console.log(toPlainText(blogData.description));
   const readingDoc = toPlainText(blogData.description);
   const stats = readingTime(readingDoc);
-  console.log(stats.minutes);
+
   return (
     <Container>
       <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
@@ -61,8 +58,18 @@ const BlogDetails = ({ data }) => {
       </div>
       <article className="prose dark:prose-dark py-10 w-full">
         <DataParser content={blogData.description} />
-        <button onClick={addLike}>{likes} :-)</button>
       </article>
+
+      <button
+        onClick={addLike}
+        className="flex text-center w-full py-4 justify-center hover:text-red-700 transition-all delay-110"
+      >
+        <span className="text-2xl mr-2 self-center">{likes}</span>
+        <span>
+          <LikeButton />
+        </span>
+      </button>
+
       <div className="flex flex-col">
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full ">
           {blogNextAndPrev?.previousPost !== null ? (
