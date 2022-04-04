@@ -4,7 +4,7 @@ import { urlFor } from '../../lib/sanity';
 const GitPosts = ({ post }) => {
   return (
     <>
-      <section className="mt-16 pb-16">
+      <section className="pb-16">
         <h2 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 text-black dark:text-white">
           Git Posts
         </h2>

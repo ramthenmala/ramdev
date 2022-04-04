@@ -7,12 +7,13 @@ export const blogQuery = groq`
     title,
     subtitle,
     publishedate,
+    featured,
     slug,
   }
 `;
 
 export const getAllBlogs = async ({ offset }) => {
-  const post = await sanityClient.fetch(`${blogQuery}[${offset}...${offset + 2}]`);
+  const post = await sanityClient.fetch(`${blogQuery}[${offset}...${offset + 10}]`);
   return post;
 };
 
@@ -32,4 +33,12 @@ export const blogDetailsQuery = groq`
   }
 `;
 
-
+export const blogNextAndPrevQuery = groq`
+  *[_type == "blogposts" && slug.current == $slug]{
+    "currentPost": {
+      title
+    },
+    "previousPost": *[_type == "blogposts" && ^.publishedate > publishedate]|order(publishedate desc)[0]{title,"slug": slug.current},
+    "nextPost": *[_type == "blogposts" && ^.publishedate < publishedate]|order(publishedate asc)[0]{title,"slug": slug.current},
+  }|order(publishedAt)[0]
+`

@@ -6,6 +6,8 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 import gitProjects from './gitProjects';
 import blogPosts from './blogPosts';
 import author from './author';
+import aboutpage from './about';
+import photogallery from './photogallery';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -18,5 +20,7 @@ export default createSchema({
     gitProjects,
     blogPosts,
     author,
+    aboutpage,
+    photogallery,
   ]),
 });

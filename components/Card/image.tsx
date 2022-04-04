@@ -13,6 +13,7 @@ const CardImage = ({ alt, imgUrl }) => {
       src={imgUrl}
       layout="fill"
       objectFit="cover"
+      priority={true}
       className={cn(
         'duration-700 ease-in-out group-hover:opacity-75',
         isLoading

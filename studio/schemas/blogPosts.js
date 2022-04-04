@@ -14,6 +14,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'featured',
+      title: 'Featured',
+      type: 'boolean',
+    },
+    {
       name: 'likes',
       title: 'Likes',
       type: 'number',

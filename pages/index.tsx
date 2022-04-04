@@ -2,29 +2,29 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import { sanityClient } from '../lib/server';
 import GitPosts from '../components/GitPosts/GitPostList';
-import Container from '../components/PageLayout/Container';
+import Container from '../components/Container';
 import { gitQuery } from '../query/gitHub';
 
 const Home: NextPage = ({ post }: any) => {
   return (
     <>
-      <Head>
-        <title>Home Page</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <Container>
-        <section className="flex flex-col-reverse sm:flex-row items-start">
-          <div className="flex flex-col pr-12">
-            <h1 className="text-6xl font-bold">Ram</h1>
-            <h2>Front End Engineer</h2>
-            <h3>
-              Helping developers build a faster web. Teaching about web
-              development, serverless, and React / Next.js.
-            </h3>
+        <div className="flex flex-col-reverse sm:flex-row items-start">
+          <div className="flex flex-col pr-8">
+            <div className="flex flex-col space-y-4">
+              <h1 className="text-6xl font-bold">Ram.</h1>
+            </div>
+            <h2 className="text-gray-700 dark:text-gray-200 mb-4">
+              Front end Full Stack Developer
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 mb-16">
+              I work with the JavaScript ecosystem. Welcome to my small piece of
+              the internet, where I write and share about different topics
+              related to the tech industry and life style.
+            </p>
           </div>
           <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto"></div>
-        </section>
+        </div>
 
         <GitPosts post={post} />
       </Container>
