@@ -2,7 +2,7 @@ import Container from '../components/Container';
 import { GetStaticProps, NextPage } from 'next';
 import HeroSection from '../components/Hero';
 import { getAllBlogs } from '../actions';
-import moment from 'moment';
+import { parseISO, format } from 'date-fns';
 import BouncingLoader from '../components/BouncingLoader';
 import { useGetBlogPages } from '../actions/pagination';
 import { useState } from 'react';
@@ -16,7 +16,10 @@ export const BlogListingTOShow = ({ data, filter }) => {
           key={blogPost._id}
           url={`/blog/${blogPost.slug.current}`}
           title={blogPost.title}
-          publishedate={moment(blogPost.publishedate).format('LL')}
+          publishedate={format(
+            parseISO(blogPost.publishedate),
+            'MMMM dd, yyyy'
+          )}
           subtitle={blogPost.subtitle}
         />
       ) : (

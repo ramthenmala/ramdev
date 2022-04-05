@@ -1,3 +1,5 @@
+const withPlugins = require('next-compose-plugins');
+const withTM = require('next-transpile-modules')(['react-syntax-highlighter']);
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -12,4 +14,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withPlugins([withTM], nextConfig);

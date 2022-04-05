@@ -9,11 +9,11 @@ import {
 import Container from '../../components/Container';
 import DataParser from '../../components/DataParser';
 import Image from 'next/image';
-import moment from 'moment';
 import BlogNextPrev from '../../components/BlogNextPrev';
 import { toPlainText } from '@portabletext/react';
 import readingTime from 'reading-time/lib/reading-time';
 import { LikeButton } from '../../components/IconsPack';
+import { parseISO, format } from 'date-fns';
 
 const BlogDetails = ({ data }) => {
   const [likes, likesSet] = useState(data?.blogData?.likes);
@@ -30,7 +30,6 @@ const BlogDetails = ({ data }) => {
   const { blogNextAndPrev } = data;
   const readingDoc = toPlainText(blogData.description);
   const stats = readingTime(readingDoc);
-
   return (
     <Container>
       <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
@@ -47,8 +46,9 @@ const BlogDetails = ({ data }) => {
           />
           <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
             {'Ram Kumar / '}
-            <time>{moment(blogData.publishedate).format('LL')}</time>
-            {/* <time>{blogData.publishedate}</time> */}
+            <time>
+              {format(parseISO(blogData.publishedate), 'MMMM dd, yyyy')}
+            </time>
           </p>
         </div>
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
@@ -58,7 +58,7 @@ const BlogDetails = ({ data }) => {
         </p>
       </div>
       <article className="prose dark:prose-dark py-10 w-full">
-        <DataParser content={blogData.description} />
+        <DataParser content={blogData?.description} />
       </article>
 
       <button
