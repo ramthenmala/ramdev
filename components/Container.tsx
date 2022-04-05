@@ -8,6 +8,7 @@ import cn from 'classnames';
 // import Footer from 'components/Footer';
 import MobileMenu from './MobileMenu';
 import Footer from './Footer';
+import { LinkType } from '../types/Types';
 
 function NavItem({ href, text }) {
   const router = useRouter();

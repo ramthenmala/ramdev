@@ -2,7 +2,7 @@ import { groq } from 'next-sanity';
 import { sanityClient } from '../lib/server';
 
 export const blogQuery = groq`
-  *[_type == "blogposts"] | order(_createdAt desc) {
+  *[_type == "blogposts"] | order(publishedate desc) {
       _id,
     title,
     subtitle,
@@ -12,16 +12,13 @@ export const blogQuery = groq`
   }
 `;
 
-export const getAllBlogs = async ({ offset }) => {
-  const post = await sanityClient.fetch(`${blogQuery}[${offset}...${offset + 10}]`);
-  return post;
-};
 
 export const blogDetailsQuery = groq`
   *[_type == "blogposts" && slug.current == $slug][0]{
       _id,
     title,
     slug,
+    publishedate,
     image{
       asset->{
         _id,
@@ -43,8 +40,8 @@ export const blogNextAndPrevQuery = groq`
   }|order(publishedAt)[0]
 `
 
-export const blogSlug = `*[_type == "blogposts" && defined(slug.current)] {
-           "params": {
-               "slug": slug.current
-           }
-        }`
+export const blogSlug = groq`*[_type == "blogposts" && defined(slug.current)] {
+      "params": {
+          "slug": slug.current
+      }
+  }`

@@ -4,7 +4,7 @@ import React from 'react';
 const BlogList = ({ url, title, publishedate, subtitle }) => {
   return (
     <Link href={url}>
-      <a className="w-full">
+      <a className="w-full flex">
         <div className="w-full mb-8">
           <div className="flex flex-col justify-between md:flex-row">
             <h4 className="w-full mb-2 text-lg font-medium text-gray-900 md:text-xl dark:text-gray-100">

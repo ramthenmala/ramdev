@@ -48,6 +48,7 @@ const BlogDetails = ({ data }) => {
           <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
             {'Ram Kumar / '}
             <time>{moment(blogData.publishedate).format('LL')}</time>
+            {/* <time>{blogData.publishedate}</time> */}
           </p>
         </div>
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
