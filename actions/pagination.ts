@@ -12,9 +12,8 @@ export const useGetBlogPages = ({ blogs, filter }) => {
       if (previousPageData && !previousPageData.length) {
         return null;
       }
-      return `/api/blogs?offset=${index * PAGE_SIZE}&date=${
-        filter.date.asc ? 'asc' : 'desc'
-      }`;
+      return `/api/blogs?offset=${index * PAGE_SIZE}&date=${filter.date.asc ? 'asc' : 'desc'
+        }`;
     },
     getMyBlogs,
     { persistSize: true }

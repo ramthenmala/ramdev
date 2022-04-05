@@ -2,7 +2,7 @@ export const SmileIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6 inline-block text-[#fbbf24]"
+      className="h-6 w-6 inline-block text-[#f97316] ml-2"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -12,6 +12,25 @@ export const SmileIcon = () => {
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+  );
+};
+
+export const SadIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-6 w-6 inline-block text-[#94a3b8] ml-2"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
       />
     </svg>
   );

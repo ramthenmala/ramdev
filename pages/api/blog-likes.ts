@@ -15,7 +15,7 @@ export default async function likeButtonHandler(
     .setIfMissing({ likes: 0 })
     .inc({ likes: 1 })
     .commit()
-    .catch((error) => console.log(error));
+    .catch((error: any) => console.log(error));
 
   res.status(200).json({ likes: data.likes });
 }

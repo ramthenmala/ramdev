@@ -17,12 +17,6 @@ export const getAllBlogs = async ({ offset = 0, dates = 'desc' } = { offset: 0, 
     return post;
 };
 
-export const useGetBlogs = (initialData) => {
-    return useSWR(`/api/blogs`, fetcher, {
-        fallbackData: initialData
-    })
-}
-
 export const useGetAbout = (initialData) => {
     return useSWR(`/api/about`, fetcher, {
         fallbackData: initialData

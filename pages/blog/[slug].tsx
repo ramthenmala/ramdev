@@ -26,6 +26,7 @@ const BlogDetails = ({ data }) => {
     const data = await res.json();
     likesSet(data.likes);
   };
+
   const { blogData } = data;
   const { blogNextAndPrev } = data;
   const readingDoc = toPlainText(blogData.description);
@@ -107,13 +108,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params;
+export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
   const blogData = await sanityClient.fetch(blogDetailsQuery, { slug });
   const blogNextAndPrev = await sanityClient.fetch(blogNextAndPrevQuery, {
     slug,
   });
-  console.log(blogNextAndPrev);
   return {
     props: {
       data: { blogData, blogNextAndPrev },

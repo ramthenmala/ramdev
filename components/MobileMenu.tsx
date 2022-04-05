@@ -15,7 +15,6 @@ export default function MobileMenu() {
   );
 
   function toggleMenu() {
-    console.log('clicked');
     if (isMenuOpen) {
       setIsMenuOpen(false);
       document.body.style.overflow = '';

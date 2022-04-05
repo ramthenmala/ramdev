@@ -26,7 +26,6 @@ const PhotographyPage: NextPage = ({ gallery }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const gallery = await getPhotoGal({ offset: 0 });
-  console.log(gallery);
   return {
     props: {
       gallery,

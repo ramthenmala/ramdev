@@ -7,6 +7,7 @@ import BouncingLoader from '../components/BouncingLoader';
 import { useGetBlogPages } from '../actions/pagination';
 import { useState } from 'react';
 import BlogList from '../components/BlogList';
+import { NoMorePosts, ShowMorePosts } from '../components/Helpers';
 
 export const BlogListingTOShow = ({ data, filter }) => {
   return data.map((pages) =>
@@ -58,21 +59,22 @@ const BlogPosts: NextPage = ({ post }) => {
             All Posts
           </h3>
         </div>
+
         {blogData?.length ? (
           <BlogListingTOShow data={blogData || [post]} filter={filter} />
         ) : (
-          <BouncingLoader />
+          'Nothing to show'
         )}
 
-        <button
-          onClick={() => setSize(size + 1)}
-          disabled={isReachingEnd}
-          className={`flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 w-full items-center text-gray-600 hover:bg-gray-100 transition-all uppercase text-sm tracking-wider font-semibold disabled:bg-slate-50 ${
-            isReachingEnd ? 'text-slate-500 border-slate-200' : null
-          }`}
-        >
-          Load More
-        </button>
+        {blogData && (
+          <button
+            onClick={() => setSize(size + 1)}
+            disabled={isReachingEnd}
+            className={`flex place-content-center bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 w-full items-center text-gray-600 hover:bg-gray-100 transition-all uppercase text-sm tracking-wider font-semibold disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200`}
+          >
+            {isReachingEnd ? <NoMorePosts /> : <ShowMorePosts />}
+          </button>
+        )}
       </section>
     </Container>
   );

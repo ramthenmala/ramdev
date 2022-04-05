@@ -11,7 +11,6 @@ interface Props {}
 
 const AboutPage: NextPage<Props> = ({ post: initialData }) => {
   const { data: aboutData, error } = useGetAbout(initialData);
-  console.log(aboutData);
   if (aboutData) {
   }
   return (
