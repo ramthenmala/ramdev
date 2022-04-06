@@ -12,6 +12,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  env: {
+    googleAnalyticsID: process.env.GOOGLE_ANALYTICS_ID,
+  },
 };
 
 module.exports = withPlugins([withTM], nextConfig);

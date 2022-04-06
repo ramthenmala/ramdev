@@ -5,7 +5,7 @@ import Link from 'next/link';
 const GitPosts = ({ post }) => {
   return (
     <>
-      <section className="pb-16">
+      <section>
         <h2 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 text-black dark:text-white">
           Featured Projects
         </h2>

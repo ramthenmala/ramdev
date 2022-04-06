@@ -7,12 +7,9 @@ import { useGetAbout } from '../actions';
 import DataParser from '../components/DataParser';
 import BouncingLoader from '../components/BouncingLoader';
 
-interface Props {}
+const AboutPage: NextPage = ({ post: initialData }) => {
+  const { data: aboutData } = useGetAbout(initialData);
 
-const AboutPage: NextPage<Props> = ({ post: initialData }) => {
-  const { data: aboutData, error } = useGetAbout(initialData);
-  if (aboutData) {
-  }
   return (
     <Container>
       {aboutData ? (

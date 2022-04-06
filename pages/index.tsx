@@ -4,7 +4,6 @@ import GitPosts from '../components/GitPosts/GitPostList';
 import FeaturedBlogs from '../components/FeaturedBlogs';
 import Container from '../components/Container';
 import { gitQuery } from '../query/gitHub';
-import { getAllBlogs } from '../actions';
 import { blogQuery } from '../query/blog';
 import { groq } from 'next-sanity';
 

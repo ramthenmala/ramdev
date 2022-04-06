@@ -14,6 +14,7 @@ const BlogCard = ({ data, filter }) => {
               parseISO(blogPost.publishedate),
               'MMMM dd, yyyy'
             )}
+            minRead={blogPost.estimatedReadingTime}
             subtitle={blogPost.subtitle}
           />
         )

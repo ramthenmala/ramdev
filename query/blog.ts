@@ -8,6 +8,7 @@ export const blogQuery = `
     publishedate,
     featured,
     slug,
+    "estimatedReadingTime": round(length(pt::text(description)) / 5 / 180 )
   }
 `;
 
