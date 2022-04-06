@@ -1,12 +1,17 @@
-export type Filter = {
-  filterHandler?: () => void;
-  filter?: number;
-};
+import { SortAscendingIcon, SortDescendingIcons } from './IconsPack';
+
+// export type Filter = {
+//   filterHandler?: () => void;
+//   filter?: number;
+// };
 
 const FilteringMenu = ({ onChange, filter }) => {
   return (
-    <div onClick={() => onChange({ view: { list: +!filter.view.list } })}>
-      FilteringMenu
+    <div
+      className="cursor-pointer text-gray-600 hover:text-gray-900 transition-all"
+      onClick={() => onChange('date', { asc: +!filter.date.asc })}
+    >
+      {filter.date.asc === 0 ? <SortAscendingIcon /> : <SortDescendingIcons />}
     </div>
   );
 };

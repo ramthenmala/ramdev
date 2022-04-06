@@ -1,10 +1,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
+import { cn } from '../../lib/utils';
 import { CardProps } from '../../types/Card';
-
-function cn(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
 
 const CardImage = ({ alt, imgUrl }: CardProps) => {
   const [isLoading, isLoadingSet] = useState<boolean>(true);

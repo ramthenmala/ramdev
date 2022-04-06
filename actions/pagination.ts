@@ -2,7 +2,7 @@ import useSWRInfinite from 'swr/infinite';
 import { getMyBlogs } from '.';
 
 export const useGetBlogPages = ({ blogs, filter }) => {
-  const PAGE_SIZE = 2;
+  const PAGE_SIZE = 6;
   const result = useSWRInfinite(
     (index, previousPageData) => {
       if (index === 0) {

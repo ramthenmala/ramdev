@@ -1,11 +1,14 @@
 import { GetStaticProps, NextPage } from 'next';
 import { sanityClient } from '../lib/server';
 import GitPosts from '../components/GitPosts/GitPostList';
+import FeaturedBlogs from '../components/FeaturedBlogs';
 import Container from '../components/Container';
 import { gitQuery } from '../query/gitHub';
-import { GitResult } from '../types/gitTypes';
+import { getAllBlogs } from '../actions';
+import { blogQuery } from '../query/blog';
+import { groq } from 'next-sanity';
 
-const Home: NextPage = ({ post }) => {
+const Home: NextPage = ({ post, featuredPost }) => {
   return (
     <>
       <Container>
@@ -28,9 +31,7 @@ const Home: NextPage = ({ post }) => {
 
         <GitPosts post={post} />
 
-        <GitPosts post={post} />
-
-        <GitPosts post={post} />
+        <FeaturedBlogs featuredPost={featuredPost} />
       </Container>
     </>
   );
@@ -38,9 +39,14 @@ const Home: NextPage = ({ post }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const post = await sanityClient.fetch(gitQuery);
+  const featuredPost = await sanityClient.fetch(
+    groq`*[_type == "blogposts"][0..4] | order(publishedate desc) ${blogQuery} `
+  );
+  console.log(featuredPost);
   return {
     props: {
       post,
+      featuredPost,
     },
   };
 };

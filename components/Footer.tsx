@@ -28,11 +28,6 @@ export default function Footer() {
               About
             </a>
           </Link>
-          <Link href="/photography">
-            <a className="text-gray-500 hover:text-gray-600 transition">
-              Photography
-            </a>
-          </Link>
           <Link href="/blog">
             <a className="text-gray-500 hover:text-gray-600 transition">Blog</a>
           </Link>

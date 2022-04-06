@@ -1,8 +1,7 @@
 import { groq } from 'next-sanity';
-import { sanityClient } from '../lib/server';
 
-export const blogQuery = groq`
-  *[_type == "blogposts"] | order(publishedate desc) {
+export const blogQuery = `
+  {
       _id,
     title,
     subtitle,
@@ -27,6 +26,7 @@ export const blogDetailsQuery = groq`
     },
     description[]{..., 'asset': asset->},
     likes,
+    "estimatedReadingTime": round(length(pt::text(description)) / 5 / 180 )
   }
 `;
 

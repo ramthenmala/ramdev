@@ -1,41 +1,20 @@
 import Container from '../components/Container';
+import { useState } from 'react';
 import { GetStaticProps, NextPage } from 'next';
 import HeroSection from '../components/Hero';
 import { getAllBlogs } from '../actions';
-import { parseISO, format } from 'date-fns';
-import BouncingLoader from '../components/BouncingLoader';
 import { useGetBlogPages } from '../actions/pagination';
-import { useState } from 'react';
-import BlogList from '../components/BlogList';
 import { NoMorePosts, ShowMorePosts } from '../components/Helpers';
-
-export const BlogListingTOShow = ({ data, filter }) => {
-  return data.map((pages) =>
-    pages.map((blogPost) =>
-      filter.view.list === 0 ? (
-        <BlogList
-          key={blogPost._id}
-          url={`/blog/${blogPost.slug.current}`}
-          title={blogPost.title}
-          publishedate={format(
-            parseISO(blogPost.publishedate),
-            'MMMM dd, yyyy'
-          )}
-          subtitle={blogPost.subtitle}
-        />
-      ) : (
-        'Hell'
-      )
-    )
-  );
-};
+import FilteringMenu from '../components/FilteringMenu';
+import BlogCard from '../components/BlogCard';
+import NoData from '../components/NoData';
 
 const BlogPosts: NextPage = ({ post }) => {
   const [filter, filterSet] = useState({
     view: { list: 0 },
     date: { asc: 0 },
   });
-  const totalBlogs = parseInt(post.length);
+
   const {
     data: blogData,
     size,
@@ -50,27 +29,34 @@ const BlogPosts: NextPage = ({ post }) => {
     <Container>
       <HeroSection
         title="Blog"
-        description={`In total, ${totalBlogs} posts I've written articles on my blog.`}
+        description={`In total, posts I've written articles on my blog.`}
       />
 
       <section className="py-10">
-        <div>
+        <div className="flex items-center justify-between pb-5">
           <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
             All Posts
           </h3>
+
+          <FilteringMenu
+            onChange={(option, value) =>
+              filterSet({ ...filter, [option]: value })
+            }
+            filter={filter}
+          />
         </div>
 
         {blogData?.length ? (
-          <BlogListingTOShow data={blogData || [post]} filter={filter} />
+          <BlogCard data={blogData || [post]} filter={filter} />
         ) : (
-          'Nothing to show'
+          <NoData />
         )}
 
         {blogData && (
           <button
             onClick={() => setSize(size + 1)}
             disabled={isReachingEnd}
-            className={`flex place-content-center bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 w-full items-center text-gray-600 hover:bg-gray-100 transition-all uppercase text-sm tracking-wider font-semibold disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200`}
+            className="flex place-content-center bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 w-full items-center text-gray-600 hover:bg-gray-100 transition-all uppercase text-sm tracking-wider font-semibold disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200"
           >
             {isReachingEnd ? <NoMorePosts /> : <ShowMorePosts />}
           </button>

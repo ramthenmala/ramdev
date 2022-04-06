@@ -22,6 +22,11 @@ export default {
       type: 'datetime',
     },
     {
+      name: 'repolink',
+      title: 'Repo Link',
+      type: 'string',
+    },
+    {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
@@ -31,18 +36,6 @@ export default {
         slugify: (input) =>
           input.toLowerCase().replace(/\s+/g, '-').slice(0, 200),
       },
-    },
-    {
-      name: 'description',
-      title: 'Description',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{ title: 'Normal', value: 'Normal' }],
-        },
-      ],
     },
   ],
 };

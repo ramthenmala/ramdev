@@ -6,7 +6,7 @@ export default async function blogHandler(
     res: NextApiResponse
 ) {
     const offset = parseInt((req.query.offset || 0), 10)
-    const date = req.query.date || 'desc'
-    const data = await getAllBlogs({ offset, date })
+    const dates = req.query.date || 'asc'
+    const data = await getAllBlogs({ offset, dates })
     res.status(200).json(data);
 }
