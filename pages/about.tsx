@@ -11,7 +11,7 @@ const AboutPage: NextPage = ({ post: initialData }) => {
   const { data: aboutData } = useGetAbout(initialData);
 
   return (
-    <Container>
+    <Container title="About – Ram Kumar">
       {aboutData ? (
         <>
           <HeroSection

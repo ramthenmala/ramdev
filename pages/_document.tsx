@@ -1,6 +1,8 @@
 import Document, { Html, Main, Head, NextScript } from 'next/document';
 
 export default class CustomDocument extends Document {
+  gAnalytics();
+
   render() {
     return (
       <Html lang="en">

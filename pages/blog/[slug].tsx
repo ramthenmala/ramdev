@@ -27,7 +27,13 @@ const BlogDetails = ({ data }) => {
   };
 
   return (
-    <Container>
+    <Container
+      title={`${data?.blogData?.title} – Ram kumar`}
+      description={data?.blogData?.subtitle}
+      image={`https://ramdev.vercel.app${data.image}`}
+      date={new Date(data?.blogData?.publishedate).toISOString()}
+      type="article"
+    >
       <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
         {data?.blogData?.title}
       </h1>
