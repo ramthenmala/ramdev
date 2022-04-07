@@ -44,7 +44,7 @@ const BlogDetails = ({ data }) => {
           },
           images: [
             {
-              url: `${data?.blogData?.image.asset.url}`,
+              url: `${urlFor(data?.blogData?.image).url()}`,
               width: 850,
               height: 650,
               alt: 'Photo of text',
