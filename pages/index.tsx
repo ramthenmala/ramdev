@@ -6,10 +6,12 @@ import Container from '../components/Container';
 import { gitQuery } from '../query/gitHub';
 import { blogQuery } from '../query/blog';
 import { groq } from 'next-sanity';
+import { NextSeo } from 'next-seo';
 
 const Home: NextPage = ({ post, featuredPost }) => {
   return (
     <>
+      <NextSeo title="Home" />
       <Container>
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">

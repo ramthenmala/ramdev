@@ -13,7 +13,7 @@ const Card = ({ title, slug, imgUrl }: CardProps) => {
       <div className="p-5">
         <Link href={`/${slug}`} passHref>
           <a className="relative flex" rel="noopener noreferrer">
-            <h5 className="mb-1 text-xl font-bold tracking-tight text-gray-900">
+            <h5 className="mb-1 text-xl font-bold tracking-tight text-gray-900 ">
               {title}
             </h5>
           </a>

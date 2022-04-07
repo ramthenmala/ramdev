@@ -8,6 +8,7 @@ import { NoMorePosts, ShowMorePosts } from '../components/Helpers';
 import FilteringMenu from '../components/FilteringMenu';
 import BlogCard from '../components/BlogCard';
 import NoData from '../components/NoData';
+import { NextSeo } from 'next-seo';
 
 const BlogPosts: NextPage = ({ post }) => {
   const [filter, filterSet] = useState({
@@ -17,6 +18,7 @@ const BlogPosts: NextPage = ({ post }) => {
 
   const {
     data: blogData,
+    isValidating,
     size,
     setSize,
     isReachingEnd,
@@ -27,6 +29,7 @@ const BlogPosts: NextPage = ({ post }) => {
 
   return (
     <Container>
+      <NextSeo title="Blog" />
       <HeroSection
         title="Blog"
         description={`In total, posts I've written articles on my blog.`}

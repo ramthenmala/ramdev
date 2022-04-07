@@ -17,7 +17,7 @@ export const blogDetailsQuery = groq`
   *[_type == "blogposts" && slug.current == $slug][0]{
       _id,
     title,
-    slug,
+    slug, 
     publishedate,
     image{
       asset->{

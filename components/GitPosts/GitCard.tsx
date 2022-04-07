@@ -21,7 +21,7 @@ const GitCard = ({ title, slug, imgUrl }: CardProps) => {
             className="relative flex"
             rel="noopener noreferrer"
           >
-            <h5 className="mb-1 text-xl font-bold tracking-tight text-gray-900">
+            <h5 className="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
               {title}
             </h5>
           </a>

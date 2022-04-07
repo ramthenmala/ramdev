@@ -1,8 +1,4 @@
-import Container from '../components/Container';
-import { useState } from 'react';
-import { GetStaticProps, NextPage } from 'next';
-import HeroSection from '../components/Hero';
-import NoData from '../components/NoData';
+import { NextPage } from 'next';
 import BlogList from './BlogList';
 import { parseISO, format } from 'date-fns';
 import Link from 'next/link';

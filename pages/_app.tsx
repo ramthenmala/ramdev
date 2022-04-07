@@ -3,24 +3,12 @@ import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
 import PageLoader from '../components/NPgrogress';
 import Script from 'next/script';
-import { pageView } from '../lib/analytics';
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-
+import { DefaultSeo } from 'next-seo';
+import SEO from '../next-seo.config';
 function MyApp({ Component, pageProps }: AppProps) {
-  // const router = useRouter();
-
-  // useEffect(() => {
-  //   const handleRouterChanges = (url) => {
-  //     pageView(url);
-  //   };
-  //   router.events.on('routeChangeComplete', handleRouterChanges);
-  //   return () => {
-  //     router.events.off('routeChangeComplete', handleRouterChanges);
-  //   };
-  // }, [router.events]);
   return (
     <>
+      <DefaultSeo {...SEO} />
       <ThemeProvider attribute="class">
         <PageLoader />
         <main>

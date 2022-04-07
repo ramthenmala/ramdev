@@ -1,5 +1,5 @@
 import BlogList from './BlogList';
-import { parseISO, format } from 'date-fns';
+import moment from 'moment';
 
 const BlogCard = ({ data, filter }) => {
   return data.map((pages) =>
@@ -10,10 +10,7 @@ const BlogCard = ({ data, filter }) => {
             key={blogPost._id}
             url={`/blog/${blogPost.slug.current}`}
             title={blogPost.title}
-            publishedate={format(
-              parseISO(blogPost.publishedate),
-              'MMMM dd, yyyy'
-            )}
+            publishedate={moment(blogPost?.publishedate).format('DD/MM/YYYY')}
             minRead={blogPost.estimatedReadingTime}
             subtitle={blogPost.subtitle}
           />

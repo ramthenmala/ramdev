@@ -12,6 +12,9 @@ import Image from 'next/image';
 import BlogNextPrev from '../../components/BlogNextPrev';
 import { LikeButton } from '../../components/IconsPack';
 import { DisplayTime, PublishedTime } from '../../components/DisplayTime';
+import { NextSeo } from 'next-seo';
+import CardImage from '../../components/Card/ImageCard';
+import { urlFor } from '../../lib/sanity';
 
 const BlogDetails = ({ data }) => {
   const [likes, likesSet] = useState(data?.blogData?.likes);
@@ -27,11 +30,28 @@ const BlogDetails = ({ data }) => {
   };
 
   return (
-    <Container
-      title={`${data?.blogData?.title} – Ram kumar`}
-      description={data?.blogData?.subtitle}
-      type="article"
-    >
+    <Container>
+      <NextSeo
+        title={`${data?.blogData?.title} – Ram kumar`}
+        description={data?.blogData?.subtitle}
+        openGraph={{
+          title: `${data?.blogData?.title} – Ram kumar`,
+          description: `${data?.blogData?.subtitle}`,
+          url: `${data?.blogData?.slug.current}`,
+          type: 'article',
+          article: {
+            publishedTime: `${data?.blogData?.publishedate}`,
+          },
+          images: [
+            {
+              url: `${data?.blogData?.image.asset.url}`,
+              width: 850,
+              height: 650,
+              alt: 'Photo of text',
+            },
+          ],
+        }}
+      />
       <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
         {data?.blogData?.title}
       </h1>
@@ -44,13 +64,19 @@ const BlogDetails = ({ data }) => {
             src="/images/ram.jpg"
             className="rounded-full"
           />
-          <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
-            {'Ram Kumar / '}
-
-            <PublishedTime time={data?.blogData?.publishedate} />
-          </p>
+          <PublishedTime
+            userName="Ram Kumar "
+            time={data?.blogData?.publishedate}
+          />
         </div>
         <DisplayTime time={data?.blogData?.estimatedReadingTime} />
+      </div>
+
+      <div className="relative h-96 my-6">
+        <CardImage
+          imgUrl={urlFor(data?.blogData?.image).url()}
+          alt={data?.blogData?.title}
+        />
       </div>
 
       <article className="prose dark:prose-dark py-10 w-full">
@@ -106,7 +132,7 @@ export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
   const blogNextAndPrev = await sanityClient.fetch(blogNextAndPrevQuery, {
     slug,
   });
-
+  console.log(blogData);
   return {
     props: {
       data: { blogData, blogNextAndPrev },

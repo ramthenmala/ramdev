@@ -6,12 +6,14 @@ import HeroSection from '../components/Hero';
 import { useGetAbout } from '../actions';
 import DataParser from '../components/DataParser';
 import BouncingLoader from '../components/BouncingLoader';
+import { NextSeo } from 'next-seo';
 
 const AboutPage: NextPage = ({ post: initialData }) => {
   const { data: aboutData } = useGetAbout(initialData);
 
   return (
-    <Container title="About – Ram Kumar">
+    <Container>
+      <NextSeo title="About" description={aboutData[0].subtitle} />
       {aboutData ? (
         <>
           <HeroSection

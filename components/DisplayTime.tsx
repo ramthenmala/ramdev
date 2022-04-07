@@ -1,4 +1,4 @@
-import { parseISO, format } from 'date-fns';
+import moment from 'moment';
 
 export const DisplayTime = ({ time }) => {
   return (
@@ -8,10 +8,10 @@ export const DisplayTime = ({ time }) => {
   );
 };
 
-export const PublishedTime = ({ time }) => {
+export const PublishedTime = ({ time, userName }) => {
   return (
-    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
-      {format(parseISO(time), 'dd.MM.yyyy')}
+    <p className="ml-2 mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
+      {userName} - {moment(time).format('DD/MM/YYYY')}
     </p>
   );
 };
