@@ -41,7 +41,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const featuredPost = await sanityClient.fetch(
     groq`*[_type == "blogposts"][0..4] | order(publishedate desc) ${blogQuery} `
   );
-  console.log(featuredPost);
   return {
     props: {
       post,

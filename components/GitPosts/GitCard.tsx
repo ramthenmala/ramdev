@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { CardProps } from '../../types/Card';
-import CardImage from '../card/CardImage';
+import CardImage from '../Card/ImageCard';
 
 const GitCard = ({ title, slug, imgUrl }: CardProps) => {
   return (

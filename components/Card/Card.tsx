@@ -1,4 +1,4 @@
-import CardImage from './CardImage';
+import CardImage from './ImageCard';
 import Link from 'next/link';
 import { CardProps } from '../../types/Card';
 

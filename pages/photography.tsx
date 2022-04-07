@@ -1,5 +1,5 @@
 import { GetStaticProps, NextPage } from 'next';
-import CardList from '../components/Card/CardList';
+import CardList from '../components/Card/ListCard';
 import Container from '../components/Container';
 import HeroSection from '../components/Hero';
 import { urlFor } from '../lib/sanity';

@@ -6,18 +6,19 @@ import Script from 'next/script';
 import { pageView } from '../lib/analytics';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter();
 
-  useEffect(() => {
-    const handleRouterChanges = (url) => {
-      pageView(url);
-    };
-    router.events.on('routeChangeComplete', handleRouterChanges);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouterChanges);
-    };
-  }, [router.events]);
+function MyApp({ Component, pageProps }: AppProps) {
+  // const router = useRouter();
+
+  // useEffect(() => {
+  //   const handleRouterChanges = (url) => {
+  //     pageView(url);
+  //   };
+  //   router.events.on('routeChangeComplete', handleRouterChanges);
+  //   return () => {
+  //     router.events.off('routeChangeComplete', handleRouterChanges);
+  //   };
+  // }, [router.events]);
   return (
     <>
       <ThemeProvider attribute="class">
@@ -28,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </ThemeProvider>
 
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id="G-3BX5WR2Y2Q"`}
         strategy="afterInteractive"
       />
       <Script id="google-analytics" strategy="afterInteractive">
@@ -37,7 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', ${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID});
+          gtag('config', "G-3BX5WR2Y2Q");
         `}
       </Script>
     </>

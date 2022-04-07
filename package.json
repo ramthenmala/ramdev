@@ -16,7 +16,6 @@
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/image-url": "^1.0.1",
     "date-fns": "^2.28.0",
-    "googleapis": "^100.0.0",
     "moment": "^2.29.2",
     "next": "12.1.2",
     "next-compose-plugins": "^2.2.1",

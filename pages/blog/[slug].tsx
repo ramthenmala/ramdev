@@ -11,7 +11,7 @@ import DataParser from '../../components/DataParser';
 import Image from 'next/image';
 import BlogNextPrev from '../../components/BlogNextPrev';
 import { LikeButton } from '../../components/IconsPack';
-import { parseISO, format } from 'date-fns';
+import { DisplayTime, PublishedTime } from '../../components/DisplayTime';
 
 const BlogDetails = ({ data }) => {
   const [likes, likesSet] = useState(data?.blogData?.likes);
@@ -30,8 +30,6 @@ const BlogDetails = ({ data }) => {
     <Container
       title={`${data?.blogData?.title} – Ram kumar`}
       description={data?.blogData?.subtitle}
-      image={`https://ramdev.vercel.app${data.image}`}
-      date={new Date(data?.blogData?.publishedate).toISOString()}
       type="article"
     >
       <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
@@ -48,17 +46,13 @@ const BlogDetails = ({ data }) => {
           />
           <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
             {'Ram Kumar / '}
-            <time>
-              {format(parseISO(data?.blogData?.publishedate), 'MMMM dd, yyyy')}
-            </time>
+
+            <PublishedTime time={data?.blogData?.publishedate} />
           </p>
         </div>
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
-          {data?.blogData?.estimatedReadingTime} Min
-          {` • `}
-          {/* 1235 */}
-        </p>
+        <DisplayTime time={data?.blogData?.estimatedReadingTime} />
       </div>
+
       <article className="prose dark:prose-dark py-10 w-full">
         <DataParser content={data?.blogData?.description} />
       </article>
