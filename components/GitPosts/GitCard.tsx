@@ -5,15 +5,6 @@ import CardImage from '../Card/ImageCard';
 const GitCard = ({ title, slug, imgUrl }: CardProps) => {
   return (
     <div className="bg-white rounded-lg shadow-md dark:bg-gray-800 ">
-      <Link href={`${slug}`} passHref>
-        <a
-          target="_blank"
-          className="relative h-64 flex"
-          rel="noopener noreferrer"
-        >
-          <CardImage imgUrl={imgUrl} alt={title} />
-        </a>
-      </Link>
       <div className="p-5">
         <Link href={`${slug}`} passHref>
           <a
