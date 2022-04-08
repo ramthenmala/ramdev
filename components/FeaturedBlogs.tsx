@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import BlogList from './BlogList';
-import { parseISO, format } from 'date-fns';
+import moment from 'moment';
 import Link from 'next/link';
 
 const FeaturedBlogs: NextPage = ({ featuredPost }) => {
@@ -14,17 +14,14 @@ const FeaturedBlogs: NextPage = ({ featuredPost }) => {
         </div>
 
         <div className="flex flex-col">
-          {featuredPost.map((post) => (
+          {featuredPost?.map((post) => (
             <BlogList
-              key={post._id}
-              url={`/blog/${post.slug.current}`}
-              title={post.title}
-              publishedate={format(
-                parseISO(post.publishedate),
-                'MMMM dd, yyyy'
-              )}
-              minRead={post.estimatedReadingTime}
-              subtitle={post.subtitle}
+              key={post?._id}
+              url={`/blog/${post?.slug.current}`}
+              title={post?.title}
+              publishedate={moment(post?.publishedate).format('DD/MM/YYYY')}
+              minRead={post?.estimatedReadingTime}
+              subtitle={post?.subtitle}
             />
           ))}
         </div>
