@@ -11,7 +11,7 @@ const CardImage = ({ alt, imgUrl }: CardProps) => {
       src={imgUrl}
       layout="fill"
       objectFit="cover"
-      priority={true}
+      priority
       className={cn(
         'duration-700 ease-in-out group-hover:opacity-75',
         isLoading
