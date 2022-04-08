@@ -15,7 +15,7 @@ const GitPosts = ({ post }) => {
               <GitCard
                 title={gitPosts.title}
                 slug={gitPosts.repolink}
-                imgUrl={urlFor(gitPosts.image).url()}
+                imgUrl={urlFor(gitPosts.image).width(200).url()}
                 key={gitPosts._id}
               />
             ))}
