@@ -8,7 +8,7 @@ import { urlFor } from '../lib/sanity';
 import { cn } from '../lib/utils';
 import { getImageDimensions } from '@sanity/asset-utils';
 
-export const CustomImage = ({ asset, alt, isInline, width, height }) => {
+export const DataParserImage = ({ asset, alt, width, height }) => {
   const [isLoading, isLoadingSet] = useState(true);
   return (
     <Image
@@ -43,7 +43,7 @@ const components = {
       const { width, height } = getImageDimensions(asset);
       return (
         <>
-          <CustomImage
+          <DataParserImage
             asset={asset}
             alt={alt}
             isInline={isInline}

@@ -44,7 +44,7 @@ const BlogDetails = ({ data }) => {
           },
           images: [
             {
-              url: `${urlFor(data?.blogData?.image).url()}`,
+              url: 'https://ramdev.vercel.app/static/images/banner.png',
               width: 850,
               height: 650,
               alt: 'Photo of text',
@@ -64,19 +64,25 @@ const BlogDetails = ({ data }) => {
             src="/images/ram.jpg"
             className="rounded-full"
           />
-          <PublishedTime
-            userName="Ram Kumar "
-            time={data?.blogData?.publishedate}
-          />
+          {data?.blogData?.publishedate && (
+            <PublishedTime
+              userName="Ram Kumar "
+              time={data?.blogData?.publishedate}
+            />
+          )}
         </div>
-        <DisplayTime time={data?.blogData?.estimatedReadingTime} />
+        {data?.blogData?.estimatedReadingTime && (
+          <DisplayTime time={data?.blogData?.estimatedReadingTime} />
+        )}
       </div>
 
       <div className="relative h-96 my-6">
-        <CardImage
-          imgUrl={urlFor(data?.blogData?.image).url()}
-          alt={data?.blogData?.title}
-        />
+        {data?.blogData && (
+          <CardImage
+            imgUrl={urlFor(data?.blogData?.image).url()}
+            alt={data?.blogData?.title}
+          />
+        )}
       </div>
 
       <article className="prose dark:prose-dark py-10 w-full">
@@ -132,6 +138,7 @@ export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
   const blogNextAndPrev = await sanityClient.fetch(blogNextAndPrevQuery, {
     slug,
   });
+
   console.log(blogData);
   return {
     props: {

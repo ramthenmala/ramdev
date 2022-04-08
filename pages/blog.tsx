@@ -30,10 +30,7 @@ const BlogPosts: NextPage = ({ post }) => {
   return (
     <Container>
       <NextSeo title="Blog" />
-      <HeroSection
-        title="Blog"
-        description={`In total, posts I've written articles on my blog.`}
-      />
+      <HeroSection title="Blog" />
 
       <section className="py-10">
         <div className="flex items-center justify-between pb-5">
