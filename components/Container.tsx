@@ -6,7 +6,9 @@ import NextLink from 'next/link';
 // import Footer from 'components/Footer';
 import MobileMenu from './MobileMenu';
 import Footer from './Footer';
-import { cn } from '../lib/utils';
+export function cn(...classes: string[]) {
+    return classes.filter(Boolean).join(' ');
+}
 
 function NavItem({ href, text }) {
   const router = useRouter();
