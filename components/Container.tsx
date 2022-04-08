@@ -1,14 +1,12 @@
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
-import cn from 'classnames';
 
 // import Footer from 'components/Footer';
 import MobileMenu from './MobileMenu';
 import Footer from './Footer';
-import { LinkType } from '../types/Types';
+import { cn } from '../lib/utils';
 
 function NavItem({ href, text }) {
   const router = useRouter();
